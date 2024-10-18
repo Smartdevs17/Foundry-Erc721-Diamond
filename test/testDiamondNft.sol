@@ -73,12 +73,12 @@ contract DiamondDeployer is Test, IDiamondCut {
        DiamondInit(address(diamond)).init();
    }
 
-   function testNftFunctionality() public {
+   function testDiamondNft() public {
        // Assuming you have an NFT facet with a mint function
        DiamondNftFacet nftFacet = DiamondNftFacet(address(diamond));
 
        // Mint a new NFT
-       nftFacet.mint(address(this), 1);
+       nftFacet.mint(address(this), 1, "test");
 
        // Check the owner of the newly minted NFT
        address owner = nftFacet.ownerOf(1);
@@ -88,7 +88,9 @@ contract DiamondDeployer is Test, IDiamondCut {
        uint256 balance = nftFacet.balanceOf(address(this));
        assertEq(balance, 1);
 
-       // Add more assertions as needed to test other NFT functionalities
+       assertEq(nftFacet.ownerOf(1), address(this));
+       assertEq(nftFacet.getApproved(1), address(0));
+       assertEq(nftFacet.isApprovedForAll(address(this), address(0)), false);
    }
 
    // multiple initialization should fail
@@ -105,7 +107,7 @@ function generateSelectors(
         cmd[1] = "scripts/genSelectors.js";
         cmd[2] = _facetName;
         bytes memory res = vm.ffi(cmd);
-        selectors = abi.decode(res, (bytes4));
+        selectors = abi.decode(res, (bytes4[])); // Change from bytes4 to bytes4[]
     }
 
     function diamondCut(

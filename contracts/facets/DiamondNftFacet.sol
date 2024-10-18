@@ -124,4 +124,12 @@ contract DiamondNftFacet is IERC721 {
         _tokenApprovals[tokenId] = to;
         emit Approval(_nfts[tokenId].owner, to, tokenId);
     }
+
+    function balanceOf(address owner) external view returns (uint256 balance) {
+        balance = _ownedTokens[owner].length;
+    }
+
+
+
+
 }
