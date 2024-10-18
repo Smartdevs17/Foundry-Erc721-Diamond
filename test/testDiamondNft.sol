@@ -5,6 +5,7 @@ import "../contracts/facets/OwnershipFacet.sol";
 import "../contracts/facets/DiamondNftFacet.sol";
 import "../contracts/facets/DiamondCutFacet.sol";
 import "../contracts/facets/DiamondLoupeFacet.sol";
+import "../contracts/facets/MerkleFacet.sol";
 import "../contracts/upgradeInitializers/DiamondInit.sol";
 import "../contracts/Diamond.sol";
 
@@ -115,4 +116,4 @@ function generateSelectors(
         address _init,
         bytes calldata _calldata
     ) external override {}
-}
+}   

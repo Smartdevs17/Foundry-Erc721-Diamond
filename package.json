@@ -2,6 +2,11 @@
   "name": "hardhat-project",
   "dependencies": {
     "@nomiclabs/hardhat-ethers": "^2.0.6",
-    "ethers": "^5.6.9"
+    "@openzeppelin/contracts": "^5.1.0",
+    "csv-parser": "^3.0.0",
+    "ethers": "^5.6.9",
+    "hardhat": "^2.22.13",
+    "keccak256": "^1.0.6",
+    "merkletreejs": "^0.4.0"
   }
 }
